@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chicken Soup for the Fremen Soul</title>
-    <description>Gabe's blog/portfolio/soapbox/bragbox/discussion center/poorly thoughtout idea graveyard
+    <description>Some Nerd's blog/portfolio/soapbox
 </description>
     <link>http://gabcoh2.github.io/</link>
     <atom:link href="http://gabcoh2.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 07 Aug 2016 22:22:29 -0500</pubDate>
-    <lastBuildDate>Sun, 07 Aug 2016 22:22:29 -0500</lastBuildDate>
+    <pubDate>Sun, 07 Aug 2016 22:39:17 -0500</pubDate>
+    <lastBuildDate>Sun, 07 Aug 2016 22:39:17 -0500</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
