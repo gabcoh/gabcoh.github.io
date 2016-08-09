@@ -6,13 +6,15 @@
 </description>
     <link>http://gabcoh2.github.io/</link>
     <atom:link href="http://gabcoh2.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 09 Aug 2016 17:28:38 -0500</pubDate>
-    <lastBuildDate>Tue, 09 Aug 2016 17:28:38 -0500</lastBuildDate>
+    <pubDate>Tue, 09 Aug 2016 18:29:22 -0500</pubDate>
+    <lastBuildDate>Tue, 09 Aug 2016 18:29:22 -0500</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>TUCTF 2016: Secure Auth</title>
-        <description>&lt;h2 id=&quot;problem&quot;&gt;problem&lt;/h2&gt;
+        <description>&lt;p&gt;(the entire TUCTF server vm is available &lt;a href=&quot;http://ctf.asciioverflow.com/general/2016/07/06/tuctf-2016.html&quot;&gt;here&lt;/a&gt; for you to try yourself!)&lt;/p&gt;
+
+&lt;h2 id=&quot;problem&quot;&gt;problem&lt;/h2&gt;
 &lt;p&gt;We have set up this fancy automatic signing server!
 We also uses RSA authentication, so it’s super secure!&lt;/p&gt;
 
@@ -106,6 +108,7 @@ Finally, $S(q) = r^\prime \times q^\prime \pmod N$&lt;/p&gt;
 &lt;p&gt;$
 t \mid q \implies q^d = ((q\div t)\times t)^d = (q\div t)^d \times t^d \pmod N 
 $&lt;/p&gt;
+
 </description>
         <pubDate>Tue, 09 Aug 2016 00:00:00 -0500</pubDate>
         <link>http://gabcoh2.github.io/2016/08/09/Secure_Auth.html</link>
