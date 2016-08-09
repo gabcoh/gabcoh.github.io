@@ -6,8 +6,8 @@
 </description>
     <link>http://gabcoh2.github.io/</link>
     <atom:link href="http://gabcoh2.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 08 Aug 2016 22:49:49 -0500</pubDate>
-    <lastBuildDate>Mon, 08 Aug 2016 22:49:49 -0500</lastBuildDate>
+    <pubDate>Mon, 08 Aug 2016 22:52:54 -0500</pubDate>
+    <lastBuildDate>Mon, 08 Aug 2016 22:52:54 -0500</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -34,7 +34,7 @@ function&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;p^e\equiv C\pmod N&lt;/script&gt;
 
-&lt;p&gt;and that we are given three of these pairs where $p$ and $e$ 
+&lt;p&gt;and that we are given three of these pairs in which $p$ and $e$ 
 are held constant.&lt;/p&gt;
 
 &lt;p&gt;The &lt;strong&gt;Chinese Remainder Theorem&lt;/strong&gt; tells us that given&lt;/p&gt;
