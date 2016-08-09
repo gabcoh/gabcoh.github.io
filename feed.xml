@@ -6,8 +6,8 @@
 </description>
     <link>http://gabcoh2.github.io/</link>
     <atom:link href="http://gabcoh2.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 08 Aug 2016 22:52:54 -0500</pubDate>
-    <lastBuildDate>Mon, 08 Aug 2016 22:52:54 -0500</lastBuildDate>
+    <pubDate>Mon, 08 Aug 2016 23:36:25 -0500</pubDate>
+    <lastBuildDate>Mon, 08 Aug 2016 23:36:25 -0500</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -52,7 +52,7 @@ are held constant.&lt;/p&gt;
 &lt;p&gt;With Some more searching I found that one of my favorite &lt;a href=&quot;https://hackage.haskell.org/package/arithmoi-0.4.2.0/docs/Math-NumberTheory-Moduli.html#v:chineseRemainder&quot;&gt;haskell libraries&lt;/a&gt;
 already has a function to compute $x$ or $p^e$ from Eq. 2 and 3.&lt;/p&gt;
 
-&lt;p&gt;So, after a bit of proccessing and guessing at the private key (it ends up being 3!!!) 
+&lt;p&gt;So, after a bit of proccessing and guessing at the public key (it ends up being 3!!!) 
 we end up with the flag (&lt;a href=&quot;http://gabcoh2.github.io/assets/abctf_2016/a_small_broadcast/chinese.hs&quot;&gt;code&lt;/a&gt;):&lt;/p&gt;
 
 &lt;center&gt;&lt;code&gt;abctf{ch!n3s3_rema1nd3r_the0rem_is_to0_op_4_m3}&lt;/code&gt;&lt;/center&gt;
