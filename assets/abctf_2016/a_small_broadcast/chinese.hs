@@ -4,7 +4,7 @@ import qualified Data.ByteString as BS
 import Math.NumberTheory.Moduli
 import Math.NumberTheory.Powers.Cubes
 
---converts bytestring into bigendian integer
+--converts bigendian bytestring into integer
 bsToInteger :: BS.ByteString -> Integer
 bsToInteger a = fst $ BS.foldr (\ z (x, y) -> (x + (toInteger z)*(256^y), y + 1)) (0, 0)  a
 
