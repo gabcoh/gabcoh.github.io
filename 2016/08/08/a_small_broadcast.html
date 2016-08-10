@@ -10,8 +10,8 @@
   <meta name="description" content="problem I RSA encrypted the same message 3 different times with the same exponent. Can you decrypt this?">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://gabcoh2.github.io/2016/08/08/a_small_broadcast.html">
-  <link rel="alternate" type="application/rss+xml" title="Chicken Soup for the Fremen Soul" href="http://gabcoh2.github.io/feed.xml">
+  <link rel="canonical" href="http://gabcoh.github.io/2016/08/08/a_small_broadcast.html">
+  <link rel="alternate" type="application/rss+xml" title="Chicken Soup for the Fremen Soul" href="http://gabcoh.github.io/feed.xml">
   
     <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -83,7 +83,7 @@
 
   <div class="post-content" itemprop="articleBody">
     <h1 id="problem">problem</h1>
-<p>I RSA encrypted the same message 3 different times with the same exponent. Can you decrypt <a href="http://gabcoh2.github.io/assets/abctf_2016/a_small_broadcast/broadcast.txt">this</a>?</p>
+<p>I RSA encrypted the same message 3 different times with the same exponent. Can you decrypt <a href="http://gabcoh.github.io/assets/abctf_2016/a_small_broadcast/broadcast.txt">this</a>?</p>
 
 <h1 id="solution">solution</h1>
 <p>As usual, my first instinct in attempting to solve this problem was to 
@@ -123,7 +123,7 @@ are held constant.</p>
 already has a function to compute $x$ or $p^e$ from Eq. 2 and 3.</p>
 
 <p>So, after a bit of proccessing and guessing at the public key (it ends up being 3!!!) 
-we end up with the flag (<a href="http://gabcoh2.github.io/assets/abctf_2016/a_small_broadcast/chinese.hs">code</a>):</p>
+we end up with the flag (<a href="http://gabcoh.github.io/assets/abctf_2016/a_small_broadcast/chinese.hs">code</a>):</p>
 
 <center><code>abctf{ch!n3s3_rema1nd3r_the0rem_is_to0_op_4_m3}</code></center>
 

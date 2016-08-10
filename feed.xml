@@ -4,10 +4,10 @@
     <title>Chicken Soup for the Fremen Soul</title>
     <description>Some Nerd's blog/portfolio/soapbox
 </description>
-    <link>http://gabcoh2.github.io/</link>
-    <atom:link href="http://gabcoh2.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 09 Aug 2016 18:29:22 -0500</pubDate>
-    <lastBuildDate>Tue, 09 Aug 2016 18:29:22 -0500</lastBuildDate>
+    <link>http://gabcoh.github.io/</link>
+    <atom:link href="http://gabcoh.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 10 Aug 2016 16:16:28 -0500</pubDate>
+    <lastBuildDate>Wed, 10 Aug 2016 16:16:28 -0500</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -75,7 +75,7 @@ Sure, I will sign that:
 &lt;p&gt;Next, it is trivial to chose a factor of $q$, in this case we will chose $r=3$.
 We now must compute $r^\prime=S(r)$, and $q^\prime=S(q\div r)$.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-code&quot; data-lang=&quot;code&quot;&gt;[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plain&quot; data-lang=&quot;plain&quot;&gt;[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
 Welcome to RSA authentication!
 give me message to sign:
 3
@@ -111,8 +111,8 @@ $&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 09 Aug 2016 00:00:00 -0500</pubDate>
-        <link>http://gabcoh2.github.io/2016/08/09/Secure_Auth.html</link>
-        <guid isPermaLink="true">http://gabcoh2.github.io/2016/08/09/Secure_Auth.html</guid>
+        <link>http://gabcoh.github.io/2016/08/09/Secure_Auth.html</link>
+        <guid isPermaLink="true">http://gabcoh.github.io/2016/08/09/Secure_Auth.html</guid>
         
         <category>ctf</category>
         
@@ -126,7 +126,7 @@ $&lt;/p&gt;
       <item>
         <title>ABCTF 2016: a small broadcast</title>
         <description>&lt;h1 id=&quot;problem&quot;&gt;problem&lt;/h1&gt;
-&lt;p&gt;I RSA encrypted the same message 3 different times with the same exponent. Can you decrypt &lt;a href=&quot;http://gabcoh2.github.io/assets/abctf_2016/a_small_broadcast/broadcast.txt&quot;&gt;this&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;I RSA encrypted the same message 3 different times with the same exponent. Can you decrypt &lt;a href=&quot;http://gabcoh.github.io/assets/abctf_2016/a_small_broadcast/broadcast.txt&quot;&gt;this&lt;/a&gt;?&lt;/p&gt;
 
 &lt;h1 id=&quot;solution&quot;&gt;solution&lt;/h1&gt;
 &lt;p&gt;As usual, my first instinct in attempting to solve this problem was to 
@@ -166,7 +166,7 @@ are held constant.&lt;/p&gt;
 already has a function to compute $x$ or $p^e$ from Eq. 2 and 3.&lt;/p&gt;
 
 &lt;p&gt;So, after a bit of proccessing and guessing at the public key (it ends up being 3!!!) 
-we end up with the flag (&lt;a href=&quot;http://gabcoh2.github.io/assets/abctf_2016/a_small_broadcast/chinese.hs&quot;&gt;code&lt;/a&gt;):&lt;/p&gt;
+we end up with the flag (&lt;a href=&quot;http://gabcoh.github.io/assets/abctf_2016/a_small_broadcast/chinese.hs&quot;&gt;code&lt;/a&gt;):&lt;/p&gt;
 
 &lt;center&gt;&lt;code&gt;abctf{ch!n3s3_rema1nd3r_the0rem_is_to0_op_4_m3}&lt;/code&gt;&lt;/center&gt;
 
@@ -176,8 +176,8 @@ we end up with the flag (&lt;a href=&quot;http://gabcoh2.github.io/assets/abctf_
 
 </description>
         <pubDate>Mon, 08 Aug 2016 00:00:00 -0500</pubDate>
-        <link>http://gabcoh2.github.io/2016/08/08/a_small_broadcast.html</link>
-        <guid isPermaLink="true">http://gabcoh2.github.io/2016/08/08/a_small_broadcast.html</guid>
+        <link>http://gabcoh.github.io/2016/08/08/a_small_broadcast.html</link>
+        <guid isPermaLink="true">http://gabcoh.github.io/2016/08/08/a_small_broadcast.html</guid>
         
         <category>ctf</category>
         
