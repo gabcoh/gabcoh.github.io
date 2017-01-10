@@ -1,0 +1,115 @@
+---
+layout: post
+title: "TUCTF 2016: Secure Auth"
+tags: ctf tuctf_2016 writeup
+use_math: true
+---
+(the entire TUCTF server vm is available [here][1] for you to try yourself!)
+
+problem 
+-------
+We have set up this fancy automatic signing server!
+We also uses RSA authentication, so it's super secure!
+
+Note: the program accepts base 10 numbers
+
+nc ip 54321
+
+solution
+--------
+We are given an adress to a server which will take in a base $10$ number, $p$, and 
+spew out its signature under a secret key, (which is consistent through each connection).
+In order to obtain the flag, we must fabricate a signature of some given text (which is 
+consistent through each connection as well) without knowledge of that secret key.
+
+{% highlight code %}
+[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+Welcome to RSA authentication!
+give me message to sign:
+1337
+Sure, I will sign that:
+24195239458979699814515643667745488307009666060906284589653572343732496036671541067477240368640363014611610224365976889729278981425957282344433845609033080579634431864524813352427223228644196625293716265834345147724004053496852870231296068530298484902167232292389305130171937112437540332996206250872441967575617690817313476692751213554658580543352834366970567389472904089183540834654519699514023157226940529856894776904710397342114626311916892110954668315838171395358297415528982446775781114694488159167708305234231957681598843266910411384223366629754727059748008575633529517626464327881524046866382865741412801579850
+Only authorized people can view the flag
+give me a signature for get_your_hands_off_my_RSA!:
+{% endhighlight %}
+
+To recap, right now all we have been given is a function $S(p)$ which computes 
+$p^d\pmod N$ and we need to find $S(p)$, where p is the decimal representation of the string
+
+<center><code>get_your_hands_off_my_RSA!</code></center>
+
+Great!!!
+So all we need to do is find the decimal representation of that string, let's call it $q$, 
+and pass it to the server to compute $S(q)$, aka it's RSA digital signature.
+
+{% highlight python %}
+  >>> int('get_your_hands_off_my_RSA!'.encode('hex'), 16)
+  166151459290300546021127823915547539196280244544484032717734177L
+{% endhighlight %}
+{% highlight code %}
+[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+Welcome to RSA authentication!
+give me message to sign:
+166151459290300546021127823915547539196280244544484032717734177
+hey that is cheating!!! I won't sign that...
+{% endhighlight %}
+
+Ha! If only it were that easy...
+
+So clearly we'll have to be a little more clever. To defeat this we
+will use a variation of a blinding attack (sort of). 
+Lets have $N$ be the modulus used by the server, $q$ be the message for which we want to fabricate a signature, and $r$ be a divisor of $q$.
+The attack works as follows:
+
+Determine $N$ by signing -1 and adding 1 to the result. 
+   <center>$e\equiv 1\pmod 2 \iff (-1)^e\equiv N - 1\pmod N$</center>
+
+{% highlight code %}
+[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+Welcome to RSA authentication!
+give me message to sign:
+-1
+Sure, I will sign that:
+24690625680063774371747714092931245796723840632401231916590850908498671935961736332195862060536688021640067386108834202275189822898599594463635840996761025690456263370146016114156010619769568905940572317842895114700949532134039597475463182795837468991755433866386124620786221838783092089725622611582198259472856998222335236408416769316026577935933861556358082075245487480828539893580743606793508167690532131893625600405714820107050359744864841126038929638426613876368411017300987682339192115588614533886473808385041303878518137898225847735216970008990188644891634667174415391598670430735870182014445537116749235017326
+{% endhighlight %}  
+
+Next, it is trivial to chose a factor of $q$, in this case we will chose $r=3$.
+We now must compute $r^\prime=S(r)$, and $q^\prime=S(q\div r)$. 
+{%highlight Plain Text %}
+[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+Welcome to RSA authentication!
+give me message to sign:
+3
+Sure, I will sign that:
+241662300412370597870887401575310468638815644028805557874150940710375052128062439804477387620744376137350983344903937679093747405982227134597589908813493092662351037292887937645686464128877024348142601870
+771981536943490466645883149303628928082743029654476866727457943044945850287041499947181484825080627594479426752216278096138103719928982364072504099619820964109899203963156138777869349112576145447252096504
+905554389721851932627716906288222180950379393046605087045638117577060989526215739199524225574818902985830712260999621879294571268728287750784238702955204024905618170358062442043597363890209350580183560398
+55243
+Only authorized people can view the flag
+give me a signature for get_your_hands_off_my_RSA!:^C
+[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+Welcome to RSA authentication!
+give me message to sign:
+55383819763433515340375941305182513065426748181494677572578059
+Sure, I will sign that:
+148859930019323751741706762004835863694780094076684325874944911690039154827357991789528156509750839500485865038011822705017291650030136519574453407913735232003384075876031062018056887800213001477803001536
+425238903213306979228509039714168962910002401322670143495308644727391617908845100208872950291666090037410987724612559786369109253137687224740934643169786958240241358814213560134957178665146805340871760216
+930131801957520835755500937073294184790590115466714632441879712704131826082544349741703439870301890832140087059122972689670862530890097005586982498562562320614115152404361703517538584564094888566160674986
+31584
+Only authorized people can view the flag
+give me a signature for get_your_hands_off_my_RSA!:
+{% endhighlight %}
+
+This is all of the information we need to complete the attack.
+Finally, $S(q) = r^\prime \times q^\prime \pmod N$
+
+And after passing $S(q)$ to the server, we get our flag.
+<center><code>TUCTF{I'm_b1inded_6y_7h3_light}</code></center>
+
+proof
+=====
+$
+t \mid q \implies q^d = ((q\div t)\times t)^d = (q\div t)^d \times t^d \pmod N 
+$
+
+[1]:http://ctf.asciioverflow.com/general/2016/07/06/tuctf-2016.html
