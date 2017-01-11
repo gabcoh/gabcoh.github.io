@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+    <script src="envelope.js"></script>
+  </head>
+  <body>
+      <div id="canvas">
+      </div>
+      <div id="input">
+          Number of tangents <input id="lines" type=range min="1" value="20"
+          oninput="window.change=true;window.lines=document.getElementById('lines').value">
+          Weight of lines <input id="weight" type=range min="1" max="10" value="1"
+          oninput="window.change=true;window.weight=document.getElementById('weight').value">
+          Weight of points <input id="pointWeight" type=range min="1" max="10" value="1"
+          oninput="window.change=true;window.pointWeight=document.getElementById('pointWeight').value">
+          Color of directrix <input id="circleColor" type=color value='#dddddd'
+          oninput="window.change=true;window.circleColor=document.getElementById('circleColor').value">
+          Color of tangents <input id="tangentColor" type=color
+          oninput="window.change=true;window.tangentColor=document.getElementById('tangentColor').value">
+      </div>
+  </body>
+</html>

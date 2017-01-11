@@ -1,0 +1,20 @@
+html, body, div {
+    height: 100%;
+}
+
+div.canvas {
+    margin: 0;
+    display: flex;
+
+    /* This centers our sketch horizontally. */
+    justify-content: center;
+
+    /* This centers our sketch vertically. */
+    align-items: center;
+}
+div.input {
+    width:100%;
+}
+input[type=number]{
+    width: 60px;
+} 
