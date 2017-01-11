@@ -6,6 +6,10 @@ permalink: /about/
 
 Hi!
 
+# THIS IS A WORK IN PROGRESS 
+
+# MOST OF THIS STUFF IS REALLY BAD AND STUPID
+
 My names is **Gabe** and I am a high school student interested in all sorts of stuff:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Machine Learning (I mean who isn't these days)
@@ -44,5 +48,4 @@ My names is **Gabe** and I am a high school student interested in all sorts of s
 
 and much more
 
-This blog is somewhere that I will hopefully upload some cool stuff 
 

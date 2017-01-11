@@ -16,10 +16,10 @@
 title: Gabe's Blog
 email: gabcoh2@nilesk12.org 
 description: > # this means to ignore newlines until "baseurl:"
-  Some Nerd's blog/portfolio/soapbox
+  Gabe Cohen's gh-pages 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://gabcoh.github.io" # the base hostname & protocol for your site
-github_username: gabcoh2 
+github_username: gabcoh 
 
 # Build settings
 markdown: kramdown
