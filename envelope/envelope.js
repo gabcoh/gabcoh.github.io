@@ -1,5 +1,6 @@
 
 var change = true;
+var clicked = false;
 var weight = 1;
 var lines = 20;
 var focus = {x:0,y:0};
@@ -16,6 +17,7 @@ function setup() {
     var canvas = createCanvas(DIMENSION, DIMENSION);
     canvas.parent('canvas');
     canvas.mousePressed(canvasMousePressed);
+    canvas.mouseMoved(canvasMouseDragged);
 
     background(255, 255, 255);
     strokeWeight(weight);
@@ -52,6 +54,17 @@ function draw() {
 }
 
 function canvasMousePressed() {
+    clicked = true;
     focus = {x:mouseX, y:mouseY};
     change = true;
+}
+
+function mouseReleased() {
+    clicked = false;
+}
+
+function canvasMouseDragged() {
+    if (clicked) {
+        canvasMousePressed();
+    }
 }
