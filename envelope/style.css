@@ -1,5 +1,6 @@
-html, body, div {
+* {
     height: 100%;
+    width:100%;
 }
 
 div.canvas {
@@ -11,9 +12,6 @@ div.canvas {
 
     /* This centers our sketch vertically. */
     align-items: center;
-}
-div.input {
-    width:100%;
 }
 input[type=number]{
     width: 60px;

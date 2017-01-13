@@ -5,16 +5,19 @@ var weight = 1;
 var lines = 20;
 var focus = {x:0,y:0};
 var circleColor = '#aaaaaa';
+//var tangentColor = '#bbbfff';
 var pointWeight;
 
-var DIMENSION;
+var HEIGHT, WIDTH, SMALL;
 var canvasDiv;
 
 function setup() {
     canvasDiv = document.getElementById('canvas');
-    DIMENSION = Math.min(canvasDiv.clientHeight, canvasDiv.clientWidth);
+    HEIGHT = canvasDiv.clientHeight;
+    WIDTH = canvasDiv.clientWidth;
+    SMALL = Math.min(HEIGHT, WIDTH);
 
-    var canvas = createCanvas(DIMENSION, DIMENSION);
+    var canvas = createCanvas(WIDTH, HEIGHT);
     canvas.parent('canvas');
     canvas.mousePressed(canvasMousePressed);
     canvas.mouseMoved(canvasMouseDragged);
@@ -29,25 +32,27 @@ function draw() {
         clear();
         push();
         stroke(color(circleColor));
-        ellipse(DIMENSION/2, DIMENSION/2, DIMENSION/4, DIMENSION/4); 
+        ellipse(WIDTH/2, HEIGHT/2, SMALL/4, SMALL/4); 
         strokeWeight(pointWeight);
         point(focus.x,focus.y);
-        point(DIMENSION/2, DIMENSION/2);
+        point(SMALL/2, SMALL/2);
         pop();
 
         strokeWeight(weight);
+        //stroke(color(tangentColor));
+
         var epsilon = TWO_PI/lines;
         for(var rads = 0; rads < TWO_PI; rads+=epsilon){
-            var x = DIMENSION/4*Math.cos(rads) + DIMENSION/2;
-            var y = DIMENSION/4*Math.sin(rads) + DIMENSION/2;
+            var x = SMALL/4*Math.cos(rads) + WIDTH/2;
+            var y = SMALL/4*Math.sin(rads) + HEIGHT/2;
 
 
             var p = {x:(x+focus.x)/2, y:(y+focus.y)/2};
             var slope = -1*(focus.x - x)/(focus.y - y);
 
             var farLeftY = -1*slope*p.x + p.y; 
-            var farRightY = slope*(DIMENSION - p.x) + p.y;
-            line(0, farLeftY, DIMENSION, farRightY);
+            var farRightY = slope*(WIDTH- p.x) + p.y;
+            line(0, farLeftY, WIDTH, farRightY);
         }
         change = false;
     } 
