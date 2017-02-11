@@ -29,6 +29,13 @@ function setup() {
     lineSlider = createSlider(1, 100, 10);
     lineSlider.position(10,70);
     lineSlider.style('width',WIDTH/4+'px');
+    
+    pwSlider.input(function() {
+        change = true;
+    });
+    lineSlider.input(function() {
+        change = true;
+    });
 
     background(255, 255, 255);
     textSize(15)
@@ -36,7 +43,8 @@ function setup() {
 
 function draw() {
 
-    if (change || true) {
+    if (change) {
+        console.log('hi');
         clear();
 
         text("point weight", 5, 20);
