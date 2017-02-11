@@ -1,12 +1,13 @@
 
 var change = true;
 var clicked = false;
-var weight = 1;
-var lines = 20;
 var focus = {x:0,y:0};
-var circleColor = '#aaaaaa';
-//var tangentColor = '#bbbfff';
-var pointWeight;
+
+
+var pwSlider, lineSlider;
+var CIRCLE_COLOR = 200,
+    POINT_COLOR = 200,
+    LINE_WEIGHT = 1;
 
 var HEIGHT, WIDTH, SMALL;
 var canvasDiv;
@@ -21,27 +22,37 @@ function setup() {
     canvas.parent('canvas');
     canvas.mousePressed(canvasMousePressed);
     canvas.mouseMoved(canvasMouseDragged);
+   
+    pwSlider = createSlider(0, 10, 1);
+    pwSlider.position(10,30);
+    pwSlider.style('width',WIDTH/4+'px');
+    lineSlider = createSlider(1, 100, 10);
+    lineSlider.position(10,70);
+    lineSlider.style('width',WIDTH/4+'px');
 
     background(255, 255, 255);
-    strokeWeight(weight);
-    stroke(0,0,0);
+    textSize(15)
 }
 
 function draw() {
-    if (change) {
+
+    if (change || true) {
         clear();
+
+        text("point weight", 5, 20);
+        text("number of tangents", 5, 60);
+        
         push();
-        stroke(color(circleColor));
+        stroke(CIRCLE_COLOR);
         ellipse(WIDTH/2, HEIGHT/2, SMALL/4, SMALL/4); 
-        strokeWeight(pointWeight);
+        strokeWeight(pwSlider.value());
+        stroke(POINT_COLOR);
         point(focus.x,focus.y);
-        point(SMALL/2, SMALL/2);
+        point(WIDTH/2, HEIGHT/2);
         pop();
 
-        strokeWeight(weight);
-        //stroke(color(tangentColor));
-
-        var epsilon = TWO_PI/lines;
+        strokeWeight(LINE_WEIGHT);
+        var epsilon = TWO_PI/lineSlider.value();
         for(var rads = 0; rads < TWO_PI; rads+=epsilon){
             var x = SMALL/4*Math.cos(rads) + WIDTH/2;
             var y = SMALL/4*Math.sin(rads) + HEIGHT/2;
