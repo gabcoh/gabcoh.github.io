@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+:not(input) {
+    height: 100%;
+    width:100%;
+}
+input, button {
+    position : absolute;
+    font-family: 'Inconsolata', monospace;
+    border : 0;
+}
+.gWindow {
+    width : 5%;
+    height : 5%;   
+    border : 1px;
+    background : #555555;
+    text-align : center;
+}
+div.canvas {
+    margin: 0;
+    display: flex;
+
+    /* This centers our sketch horizontally. */
+    justify-content: center;
+
+    /* This centers our sketch vertically. */
+    align-items: center;
+}
