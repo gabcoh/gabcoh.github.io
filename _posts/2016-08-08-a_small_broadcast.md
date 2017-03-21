@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "ABCTF 2016: a small broadcast"
-tags: ctf abctf_2016 writeup
-use_math: true
+tags: ctf abctf2016 writeup
+math : true
 ---
 
-problem
+Problem
 =====
-I RSA encrypted the same message 3 different times with the same exponent. Can you decrypt [this][1]?
+>I RSA encrypted the same message 3 different times with the same exponent. Can you decrypt [this][1]?
 
-solution
+Solution
 ========
 As usual, my first instinct in attempting to solve this problem was to 
 just factor the modulus using [msieve][5]. But, a quick test reveals that 
@@ -57,10 +57,6 @@ So, after a bit of proccessing and guessing at the public key (it ends up being 
 we end up with the flag ([code][4]):
 
 <center><code>abctf{ch!n3s3_rema1nd3r_the0rem_is_to0_op_4_m3}</code></center>
-
-ps.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sorry for using haskell. email me for any questions on how the program works!
 
 [1]:{{site.url}}/assets/abctf_2016/a_small_broadcast/broadcast.txt
 [2]:https://en.wikipedia.org/wiki/Coppersmith%27s_attack

@@ -1,29 +1,29 @@
 ---
 layout: post
 title: "TUCTF 2016: Secure Auth"
-tags: ctf tuctf_2016 writeup
-use_math: true
+tags: ctf tuctf2016 writeup
+math: true
 ---
 (the entire TUCTF server vm is available [here][1] for you to try yourself!)
 
-problem 
+Problem 
 -------
-We have set up this fancy automatic signing server!
-We also uses RSA authentication, so it's super secure!
+>We have set up this fancy automatic signing server!
+>We also uses RSA authentication, so it's super secure!
+>
+>Note: the program accepts base 10 numbers
+>
+>nc ip 54321
 
-Note: the program accepts base 10 numbers
-
-nc ip 54321
-
-solution
+Solution
 --------
 We are given an adress to a server which will take in a base $10$ number, $p$, and 
 spew out its signature under a secret key, (which is consistent through each connection).
 In order to obtain the flag, we must fabricate a signature of some given text (which is 
 consistent through each connection as well) without knowledge of that secret key.
 
-{% highlight code %}
-[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+{% highlight terminal %}
+$ nc localhost 54321
 Welcome to RSA authentication!
 give me message to sign:
 1337
@@ -36,7 +36,9 @@ give me a signature for get_your_hands_off_my_RSA!:
 To recap, right now all we have been given is a function $S(p)$ which computes 
 $p^d\pmod N$ and we need to find $S(p)$, where p is the decimal representation of the string
 
-<center><code>get_your_hands_off_my_RSA!</code></center>
+{% highlight code %}
+get_your_hands_off_my_RSA!
+{% endhighlight %}
 
 Great!!!
 So all we need to do is find the decimal representation of that string, let's call it $q$, 
@@ -46,8 +48,8 @@ and pass it to the server to compute $S(q)$, aka it's RSA digital signature.
   >>> int('get_your_hands_off_my_RSA!'.encode('hex'), 16)
   166151459290300546021127823915547539196280244544484032717734177L
 {% endhighlight %}
-{% highlight code %}
-[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+{% highlight terminal %}
+$ nc localhost 54321
 Welcome to RSA authentication!
 give me message to sign:
 166151459290300546021127823915547539196280244544484032717734177
@@ -62,10 +64,10 @@ Lets have $N$ be the modulus used by the server, $q$ be the message for which we
 The attack works as follows:
 
 Determine $N$ by signing -1 and adding 1 to the result. 
-   <center>$e\equiv 1\pmod 2 \iff (-1)^e\equiv N - 1\pmod N$</center>
+   <center>$$e\equiv 1\pmod 2 \iff (-1)^e\equiv N - 1\pmod N$$</center>
 
-{% highlight code %}
-[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+{% highlight terminal %}
+$ nc localhost 54321
 Welcome to RSA authentication!
 give me message to sign:
 -1
@@ -73,10 +75,10 @@ Sure, I will sign that:
 24690625680063774371747714092931245796723840632401231916590850908498671935961736332195862060536688021640067386108834202275189822898599594463635840996761025690456263370146016114156010619769568905940572317842895114700949532134039597475463182795837468991755433866386124620786221838783092089725622611582198259472856998222335236408416769316026577935933861556358082075245487480828539893580743606793508167690532131893625600405714820107050359744864841126038929638426613876368411017300987682339192115588614533886473808385041303878518137898225847735216970008990188644891634667174415391598670430735870182014445537116749235017326
 {% endhighlight %}  
 
-Next, it is trivial to chose a factor of $q$, in this case we will chose $r=3$.
-We now must compute $r^\prime=S(r)$, and $q^\prime=S(q\div r)$. 
-{%highlight Plain Text %}
-[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+Next, it is trivial to chose a factor of $$q$$, in this case we will chose $$r=3$$.
+We now must compute $$r^\prime=S(r)$$, and $$q^\prime=S(q\div r)$$. 
+{% highlight terminal %}
+$ nc localhost 54321
 Welcome to RSA authentication!
 give me message to sign:
 3
@@ -87,7 +89,7 @@ Sure, I will sign that:
 55243
 Only authorized people can view the flag
 give me a signature for get_your_hands_off_my_RSA!:^C
-[~/Desktop/TUCTF/Secure Auth]$ nc localhost 54321
+$ nc localhost 54321
 Welcome to RSA authentication!
 give me message to sign:
 55383819763433515340375941305182513065426748181494677572578059
@@ -101,15 +103,18 @@ give me a signature for get_your_hands_off_my_RSA!:
 {% endhighlight %}
 
 This is all of the information we need to complete the attack.
-Finally, $S(q) = r^\prime \times q^\prime \pmod N$
+Finally, $$$$S(q) = r^\prime \times q^\prime \pmod N$$$$
 
-And after passing $S(q)$ to the server, we get our flag.
-<center><code>TUCTF{I'm_b1inded_6y_7h3_light}</code></center>
+And after passing $$S(q)$$ to the server, we get our flag.
 
-proof
+{% highlight code %}
+TUCTF{I'm_b1inded_6y_7h3_light}
+{% endhighlight %}
+
+Proof
 =====
-$
+$$
 t \mid q \implies q^d = ((q\div t)\times t)^d = (q\div t)^d \times t^d \pmod N 
-$
+$$
 
 [1]:http://ctf.asciioverflow.com/general/2016/07/06/tuctf-2016.html
