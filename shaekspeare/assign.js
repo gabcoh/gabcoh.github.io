@@ -276,12 +276,11 @@ for(var i = 0; i<play_names.length || i<assigner_names.length; i++) {
         assigner_select.appendChild(assigner_node);
     }
 }
-var domain = "shaekspeare/";
 function runAssignment() {
     var play = plays[document.getElementById("play_select").value];
     var assigner = registered_assigners[document.getElementById("assigner_select").value];
     var actors = document.getElementById("actors").value;
-    fetchJSONFile(domain + "matrix3/"+play).then(assigner(actors), function(err) {
+    fetchJSONFile("./matrix3/"+play).then(assigner(actors), function(err) {
         console.log("err gabe" + err);   
     });
 }
