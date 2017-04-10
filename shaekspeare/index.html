@@ -1,0 +1,25 @@
+<html>
+    <head>
+          <link rel="stylesheet" type="text/css" href="style.css">
+          <link rel="icon" href="favicon.ico" />
+    </head>
+    <body>
+        <h1> Shaekespeare Role Assignner </h1>
+
+        <div id="input">
+            <!-- options are inserted by init.js -->
+            <select id="play_select">
+            </select>
+            <select id="assigner_select">
+            </select>
+            <input type="number" min="1" max="70" id="actors" placeholder="Actors"></input>
+            <button id="submit" onclick="runAssignment()">Get Assignment</button>
+        </div>
+
+        <div id="output">
+
+        </div>
+
+        <script type="text/javascript" src="/assign.js"></script>
+    </body>
+</html>

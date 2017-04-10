@@ -1,0 +1,55 @@
+body {
+    font-size : 100%;
+    font-family : 'Olde English';
+    //background-image : url(paper.jpg);
+    width : 100%;
+    height : 100%;
+    background : aliceblue;
+}
+h1 {
+    font-size : 5em;
+    margin : auto;
+    text-align : center;
+    width : 100%;
+}
+#input select, input#actors, button {
+    font-family : inherit;
+    font-size : 2em;
+    padding: 0;
+    border-style : solid;
+    border-color : #788088;
+    background: #eaf2fb;    
+    float : left;
+    width : 50%;
+}
+#actors {
+    background : aliceblue;
+    border : clear;
+}
+#output table {
+    font-size : 1.2em;
+    width : 100%;
+    height : 100%;
+    background : #c9d1d8;
+}
+#output table tr td {
+}
+#output table tr td:first-child {
+    background : #c9d1d8;
+}
+
+@font-face {
+    font-family : 'Old London';
+    src : url(fonts/old_london/OldLondon.ttf);
+}
+
+@font-face {
+    font-family : 'Olde English';
+    src : url(fonts/OldeEnglish.ttf);
+}
+@font-face {
+    font-family : 'English Towne';
+    src : url(fonts/EnglishTowne.ttf);
+}
+
+
