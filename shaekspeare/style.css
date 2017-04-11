@@ -1,16 +1,21 @@
 body {
     font-size : 100%;
-    font-family : 'Olde English';
-    //background-image : url(paper.jpg);
     width : 100%;
     height : 100%;
     background : aliceblue;
+}
+div.old {
+    font-family : 'Olde English';
+}
+div.other {
+    font-family : 'Arial';
 }
 h1 {
     font-size : 5em;
     margin : auto;
     text-align : center;
     width : 100%;
+    cursor : pointer;
 }
 #input select, input#actors, button {
     font-family : inherit;
@@ -18,9 +23,17 @@ h1 {
     padding: 0;
     border-style : solid;
     border-color : #788088;
-    background: #eaf2fb;    
+    border-width : 1px;
+    background: #eaf2fb;
     float : left;
-    width : 50%;
+    width : 49%;
+    margin-top: .5%;
+    margin-left : .5%;
+    margin-bottom : 1%;
+}
+button {
+    border-style : outset;
+    cursor : pointer;
 }
 #actors {
     background : aliceblue;
@@ -51,5 +64,3 @@ h1 {
     font-family : 'English Towne';
     src : url(fonts/EnglishTowne.ttf);
 }
-
-
