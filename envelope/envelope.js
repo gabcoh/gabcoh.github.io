@@ -44,7 +44,6 @@ function setup() {
 function draw() {
 
     if (change) {
-        console.log('hi');
         clear();
 
         text("point weight", 5, 20);
