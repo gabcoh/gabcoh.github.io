@@ -68,8 +68,8 @@ function draw() {
             var p = {x:(x+focus.x)/2, y:(y+focus.y)/2};
             var slope = -1*(focus.x - x)/(focus.y - y);
 
-            var farLeftY = -1*slope*p.x + p.y; 
-            var farRightY = slope*(WIDTH- p.x) + p.y;
+            var farLeftY = slope*(0 - p.x) + p.y; 
+            var farRightY = slope*(WIDTH - p.x) + p.y;
             line(0, farLeftY, WIDTH, farRightY);
         }
         change = false;
