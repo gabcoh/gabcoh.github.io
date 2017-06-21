@@ -216,7 +216,8 @@ canvas {
 
 <body onload="webGLStart();">
     <canvas class="float-left" id="voronoi" onclick="drawScene()"></canvas>
-    <input class="float-left" type="range" min="1" max="50" id="points" onchange="pointsChange()"/>
+    <input class="float-left" type="range" min="1" max="50" id="points" oninput="pointsChange()">
+    Points</input>
 </body>
 
 </html>
