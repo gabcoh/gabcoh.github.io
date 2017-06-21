@@ -1,0 +1,223 @@
+<html>
+
+<head>
+<title>Basic WebGL Voronoi</title>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<script type="text/javascript" src="color-conversion-algorithms.js"></script>
+
+
+<script id="shader-fs" type="x-shader/x-fragment">
+    #define MAX_POINTS 50
+    precision mediump float;
+    
+    varying vec3 vPos;
+
+    uniform vec2 vertexArray[MAX_POINTS];
+    uniform vec3 colorArray[MAX_POINTS];
+    uniform int POINTS;
+
+    float d2(in vec2 a, in vec2 b) {
+        vec2 t = a - b;
+        return t[0]*t[0]+t[1]*t[1];
+    }
+
+    void main(void) {
+        float min =10.0;
+        vec3 color;
+        for(int i = 0; i<MAX_POINTS;i++) {
+            if(i>POINTS) {
+                break;
+            }
+            float d = d2(vPos.xy, vertexArray[i]);
+            if(d <= min) {
+                min = d;
+                color = colorArray[i];
+            }
+        }
+        //gl_FragColor = vec4((vPos + vec3(1, 1, 1))*.5, 1.0);
+        gl_FragColor = vec4(color, 1.0);
+    }
+</script>
+
+<script id="shader-vs" type="x-shader/x-vertex">
+    attribute vec3 vertexPosition; 
+    varying vec3 vPos;
+
+    void main(void) {
+        vPos = vertexPosition;
+        gl_Position = vec4(vertexPosition, 1.0);
+    }
+</script>
+
+
+<script type="text/javascript">
+
+    var gl;
+    function initGL(canvas) {
+        try {
+            gl = canvas.getContext("experimental-webgl");
+            gl.viewportWidth = canvas.width;
+            gl.viewportHeight = canvas.height;
+        } catch (e) {
+        }
+        if (!gl) {
+            alert("Could not initialise WebGL, sorry :-(");
+        }
+    }
+
+
+    function getShader(gl, id) {
+        var shaderScript = document.getElementById(id);
+        if (!shaderScript) {
+            return null;
+        }
+
+        var str = "";
+        var k = shaderScript.firstChild;
+        while (k) {
+            if (k.nodeType == 3) {
+                str += k.textContent;
+            }
+            k = k.nextSibling;
+        }
+
+        var shader;
+        if (shaderScript.type == "x-shader/x-fragment") {
+            shader = gl.createShader(gl.FRAGMENT_SHADER);
+        } else if (shaderScript.type == "x-shader/x-vertex") {
+            shader = gl.createShader(gl.VERTEX_SHADER);
+        } else {
+            return null;
+        }
+
+        gl.shaderSource(shader, str);
+        gl.compileShader(shader);
+
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+            console.error(gl.getShaderInfoLog(shader));
+            return null;
+        }
+
+        return shader;
+    }
+
+
+    var shaderProgram;
+
+    function initShaders() {
+        var fragmentShader = getShader(gl, "shader-fs");
+        var vertexShader = getShader(gl, "shader-vs");
+
+        shaderProgram = gl.createProgram();
+        gl.attachShader(shaderProgram, vertexShader);
+        gl.attachShader(shaderProgram, fragmentShader);
+        gl.linkProgram(shaderProgram);
+
+        if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+            alert("Could not initialise shaders");
+        }
+
+        gl.useProgram(shaderProgram);
+
+        shaderProgram.vertexPositionAttribute =
+            gl.getAttribLocation(shaderProgram, "vertexPosition");
+        gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
+
+        shaderProgram.vertexArrayUniform = gl.getUniformLocation(shaderProgram,
+            "vertexArray");
+        shaderProgram.colorArrayUniform = gl.getUniformLocation(shaderProgram,
+            "colorArray");
+        shaderProgram.pointsUniform = gl.getUniformLocation(shaderProgram,
+            "POINTS");
+    }
+
+    var POINTS = 20, MAX_POINTS=50;
+    var vertices, colors;
+    function genRandomAppealingColors(num) {
+    }
+    function genNewCoordsAndColors() {
+        randomArray = (length, min, range) => [...new Array(length)]
+            .map(() => (Math.random() * range)+min);
+        vertices = randomArray(2*MAX_POINTS, -1, 2);
+        colors = randomArray(3*MAX_POINTS, 0, 1);
+    }
+    function setVerticesUniform() {
+        genNewCoordsAndColors();
+        gl.uniform2fv(shaderProgram.vertexArrayUniform, new
+            Float32Array(vertices));
+        gl.uniform3fv(shaderProgram.colorArrayUniform, new
+            Float32Array(colors));
+        gl.uniform1i(shaderProgram.pointsUniform, POINTS);
+    }
+
+    var squareVertexPositionBuffer;
+
+    function initBuffers() {
+        squareVertexPositionBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
+        vertices = [
+            -1.0, -1.0, 0.0,
+            -1.0, 1.0, 0.0,
+            1.0,  1.0, 0.0,
+            1.0,  1.0, 0.0,
+            1.0,  -1.0, 0.0,
+            -1.0, -1.0, 0.0,
+        ];
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+        squareVertexPositionBuffer.itemSize = 3;
+        squareVertexPositionBuffer.numItems = 6;
+    }
+
+    function drawScene() {
+        gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+        setVerticesUniform();
+        gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
+        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
+    }
+
+
+
+    function webGLStart() {
+        var canvas = document.getElementById("voronoi");
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        initGL(canvas);
+        initShaders();
+        initBuffers();
+
+        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+        gl.enable(gl.DEPTH_TEST);
+    
+        drawScene();
+    }
+    
+    function pointsChange() {
+        POINTS = document.getElementById('points').value;
+        drawScene();
+    }
+</script>
+
+<style>
+canvas {
+    border: none;
+    width: 75%;
+    height: 100%;
+    padding: 0;
+}
+.float-left {
+    float: left;
+}
+</style>
+</head>
+
+<body onload="webGLStart();">
+    <canvas class="float-left" id="voronoi" onclick="drawScene()"></canvas>
+    <input class="float-left" type="range" min="1" max="50" id="points" oninput="pointsChange()">
+    Points</input>
+</body>
+
+</html>
