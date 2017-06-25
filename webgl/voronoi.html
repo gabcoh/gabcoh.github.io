@@ -134,13 +134,25 @@
 
     var POINTS = 20, MAX_POINTS=50;
     var vertices, colors;
-    function genRandomAppealingColors(num) {
+    function genGoldenRatioColors(num, s, v) {
+        var golden_ratio_conjugate = 0.618033988749895
+        var seed = Math.random();
+        colors = []
+        for(var i = 0; i<num; i++) {
+            seed+=golden_ratio_conjugate;
+            colors.push([seed, s, v]);
+        }
+        return colors;
     }
+    var s = .9;
+    var v = .95;
     function genNewCoordsAndColors() {
         randomArray = (length, min, range) => [...new Array(length)]
             .map(() => (Math.random() * range)+min);
         vertices = randomArray(2*MAX_POINTS, -1, 2);
-        colors = randomArray(3*MAX_POINTS, 0, 1);
+        colors =
+            [].concat.apply([],genGoldenRatioColors(MAX_POINTS, s, v).
+                map(x=>hsvToRgb(...x).map(y=>y/256)));
     }
     function setVerticesUniform() {
         genNewCoordsAndColors();
@@ -208,15 +220,15 @@ canvas {
     height: 100%;
     padding: 0;
 }
-.float-left {
-    float: left;
+.float-right{
+    float: right;
 }
 </style>
 </head>
 
 <body onload="webGLStart();">
-    <canvas class="float-left" id="voronoi" onclick="drawScene()"></canvas>
-    <input class="float-left" type="range" min="1" max="50" id="points" oninput="pointsChange()">
+    <canvas id="voronoi" onclick="drawScene()"></canvas>
+    <input class="float-right" type="range" min="1" max="50" id="points" oninput="pointsChange()">
     Points</input>
 </body>
 
