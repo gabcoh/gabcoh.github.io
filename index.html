@@ -10,108 +10,103 @@
     <link rel="stylesheet" href="assets/css/styles.min.css">
 </head>
 
-<body style="color: black;height: 100vh;"><style>
+<body style="color: black;height: 100vh;width: 100%;"><style>
     @import url('https://fonts.googleapis.com/css?family=Manjari&display=swap');
 </style>
-    <div class="row flex-column flex-sm-row flex-md-row flex-lg-row flex-xl-row" style="width: 100%;height: 100%;margin-left: 0;">
-        <div class="col d-flex align-items-center" style="padding-right: 5px;padding-left: 5px;height: auto;">
-            <div><img src="assets/img/IMG_0975.jpg" style="margin-left: auto;display: block;border-radius: 50%;margin-right: auto;margin-bottom: 10%;border-style: solid;border-color: black;width: 40%;">
-                <h1 style="text-align: center;padding-top: 1%;">Hi! I'm Gabe Cohen</h1>
-                <p style="text-align: center;padding-right: 0;margin-right: 0;">I'm a <em>passionate</em>&nbsp;software engineer currently studying Computer Science at the University of Illinois Urbana-Champaign</p>
-                <div class="d-flex flex-column flex-wrap" style="margin-left: auto;margin-right: auto;width: 100%kk;">
-                    <div class="d-flex" style="margin-right: auto;margin-left: auto;"><img src="assets/img/GitHub-Mark-32px.png" style="padding-right: .5em;"><a class="text-dark" href="https://github.com/gabcoh" style="margin-top: auto;margin-bottom: auto;">/gabcoh</a></div>
-                    <div class="d-flex" style="margin-right: auto;margin-left: auto;"><i class="fa fa-envelope-o" style="font-size: 1.5em;padding-right: .3em;"></i><a class="text-dark" href="mailto:gccohen2@illinois.edu" style="margin-top: auto;margin-bottom: auto;">gccohen2@illinois.edu</a></div>
-                    <div class="d-flex"
-                        style="margin-right: auto;margin-left: auto;"><i class="fa fa-book" style="font-size: 1.5em;padding-right: .3em;"></i><a class="text-dark" href="/blog.html" style="margin-top: auto;margin-bottom: auto;">My Blog</a></div>
-                </div>
+    <div class="d-flex flex-column flex-sm-row flex-md-row flex-lg-row flex-xl-row">
+        <div class="flex-grow-1 flex-fill" style="min-width: 40%;"><img src="assets/img/IMG_0975.jpg" style="margin-left: auto;display: block;border-radius: 50%;margin-right: auto;margin-bottom: 10%;border-style: solid;border-color: black;width: 40%;">
+            <h1 style="text-align: center;padding-top: 1%;">Hi! I'm Gabe Cohen</h1>
+            <p style="text-align: center;padding-right: 0;margin-right: 0;">I'm a <em>passionate</em>&nbsp;software engineer currently studying Computer Science at the University of Illinois Urbana-Champaign</p>
+            <div class="d-flex flex-column flex-wrap" style="margin-left: auto;margin-right: auto;width: 100%kk;">
+                <div class="d-flex" style="margin-right: auto;margin-left: auto;"><img src="assets/img/GitHub-Mark-32px.png" style="padding-right: .5em;"><a class="text-dark" href="https://github.com/gabcoh" style="margin-top: auto;margin-bottom: auto;">/gabcoh</a></div>
+                <div class="d-flex" style="margin-right: auto;margin-left: auto;"><i class="fa fa-envelope-o" style="font-size: 1.5em;padding-right: .3em;"></i><a class="text-dark" href="mailto:gccohen2@illinois.edu" style="margin-top: auto;margin-bottom: auto;">gccohen2@illinois.edu</a></div>
+                <div class="d-flex" style="margin-right: auto;margin-left: auto;"><i class="fa fa-book" style="font-size: 1.5em;padding-right: .3em;"></i><a class="text-dark" href="/blog.html" style="margin-top: auto;margin-bottom: auto;">My Blog</a></div>
             </div>
         </div>
-        <div class="col pre-scrollable" style="opacity: 1;overflow: visible;">
-            <div class="card-group d-xl-flex flex-column">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">My Skills</h4>
-                        <div class="d-flex flex-row flex-wrap">
-                            <div class="d-flex"><i class="fa fa-star"></i>
-                                <p>Javascript</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star"></i>
-                                <p>Typescript</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star"></i>
-                                <p>Python</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star"></i>
-                                <p>Java</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star"></i>
-                                <p>Linux</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star"></i>
-                                <p>ReactJS</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star-half-o"></i>
-                                <p>C</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star-half-o"></i>
-                                <p>C++</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star-half-o"></i>
-                                <p>flask</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star-half-o"></i>
-                                <p>express</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star-half-o"></i>
-                                <p>React Native</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star-half-o"></i>
-                                <p>Frontend Design</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star-o"></i>
-                                <p style="margin-right: 1em;">Haskell</p>
-                            </div>
-                            <div class="d-flex"><i class="fa fa-star-o"></i>
-                                <p style="margin-right: 1em;">GIS</p>
-                            </div>
+        <div class="card-group d-xl-flex flex-column flex-nowrap pre-scrollable" style="overflow: visible;">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">My Skills</h4>
+                    <div class="d-flex flex-row flex-wrap">
+                        <div class="d-flex"><i class="fa fa-star"></i>
+                            <p>Javascript</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star"></i>
+                            <p>Typescript</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star"></i>
+                            <p>Python</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star"></i>
+                            <p>Java</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star"></i>
+                            <p>Linux</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star"></i>
+                            <p>ReactJS</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star-half-o"></i>
+                            <p>C</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star-half-o"></i>
+                            <p>C++</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star-half-o"></i>
+                            <p>flask</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star-half-o"></i>
+                            <p>express</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star-half-o"></i>
+                            <p>React Native</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star-half-o"></i>
+                            <p>Frontend Design</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star-o"></i>
+                            <p style="margin-right: 1em;">Haskell</p>
+                        </div>
+                        <div class="d-flex"><i class="fa fa-star-o"></i>
+                            <p style="margin-right: 1em;">GIS</p>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Projects</h4>
-                        <div>
-                            <h5>wonplot - <em>in progress</em></h5>
-                            <p>wonplot is a web based 3D graphing program written in Typescript and THREEjs. In order to plot complex mathematical expressions, wonplot first parses math into ASTs using Dijkstra's Shunting Yard Algorithm before analyzing
-                                the equation structure.</p>
-                        </div>
-                        <div>
-                            <a href="https://gabecc.me/shaekspeare">
-                                <h5>Shakespeare Role Assigner</h5>
-                            </a>
-                            <p>Built for a high school English teacher who struggled to assign students roles which did not conflict with each other (have lines in the same scene)&nbsp;in class readings of Shakspeare, this webapp treats Shakespeare as a
-                                graph and attempts to find the best possible graph coloring which equalizes lines and minimizes conflicts per actor.</p>
-                        </div>
-                        <div>
-                            <h5>GUTS!</h5>
-                            <p>GUTS! is a probabilistic dice game in which two players take turns rolling two dice until they either choose to end their turn or roll snake eyes. If they choose to end their turn the running total they have earned in that
-                                turn is added to their bank. If their turn is ended by snake eyes they loose their running total. First player to 100 points wins. Using value iteration to converge on the optimal strategy, I implemented an AI which, in
-                                a round robin tournament between my teacher's AI and the AIs of past and present students, won first place.</p>
-                        </div>
-                        <div>
-                            <h5>Joplin Contributions</h5>
-                            <p>Joplin is an open source note taking application to which I contributed command autocompletion within its text based editor.</p>
-                        </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Projects</h4>
+                    <div>
+                        <h5>wonplot - <em>in progress</em></h5>
+                        <p>wonplot is a web based 3D graphing program written in Typescript and THREEjs. In order to plot complex mathematical expressions, wonplot first parses math into ASTs using Dijkstra's Shunting Yard Algorithm before analyzing the
+                            equation structure.</p>
+                    </div>
+                    <div>
+                        <a href="https://gabecc.me/shaekspeare">
+                            <h5>Shakespeare Role Assigner</h5>
+                        </a>
+                        <p>Built for a high school English teacher who struggled to assign students roles which did not conflict with each other (have lines in the same scene)&nbsp;in class readings of Shakspeare, this webapp treats Shakespeare as a graph
+                            and attempts to find the best possible graph coloring which equalizes lines and minimizes conflicts per actor.</p>
+                    </div>
+                    <div>
+                        <h5>GUTS!</h5>
+                        <p>GUTS! is a probabilistic dice game in which two players take turns rolling two dice until they either choose to end their turn or roll snake eyes. If they choose to end their turn the running total they have earned in that turn
+                            is added to their bank. If their turn is ended by snake eyes they loose their running total. First player to 100 points wins. Using value iteration to converge on the optimal strategy, I implemented an AI which, in a round
+                            robin tournament between my teacher's AI and the AIs of past and present students, won first place.</p>
+                    </div>
+                    <div>
+                        <h5>Joplin Contributions</h5>
+                        <p>Joplin is an open source note taking application to which I contributed command autocompletion within its text based editor.</p>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">About Me</h4>
-                        <p class="card-text"><span style="float: left;">My interests in computer science range from standard front end and back end application development to computer security and graphics<br></span><span id="moreAboutMe" class="collapse" style="float: left;">Aside from programming I love to be outside. I enjoy backpacking, paddling, and camping. For these selfish reasons and more altruistic ones, I am passionate about perserving the environment. My ideal position would allow me to use my skills as an engineer to have an impact on the climate crisis.<br></span>
-                            <span
-                                style="float: left;"><a class="arrow-toggle collapsed" href="#moreAboutMe" data-toggle="collapse"><i class="fa fa-arrow-down icon-arrow-down"></i><i class="fa fa-arrow-up icon-arrow-up"></i></a></span>
-                        </p><button class="btn" type="button" data-target="#moreAboutMe" data-toggle="collapse"></button></div>
-                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">About Me</h4>
+                    <p class="card-text"><span style="float: left;">My interests in computer science range from standard front end and back end application development to computer security and graphics<br></span><span id="moreAboutMe" class="collapse" style="float: left;">Aside from programming I love to be outside. I enjoy backpacking, paddling, and camping. For these selfish reasons and more altruistic ones, I am passionate about perserving the environment. My ideal position would allow me to use my skills as an engineer to have an impact on the climate crisis.<br></span>
+                        <span
+                            style="float: left;"><a class="arrow-toggle collapsed" href="#moreAboutMe" data-toggle="collapse"><i class="fa fa-arrow-down icon-arrow-down"></i><i class="fa fa-arrow-up icon-arrow-up"></i></a></span>
+                    </p><button class="btn" type="button" data-target="#moreAboutMe" data-toggle="collapse"></button></div>
             </div>
         </div>
     </div>
