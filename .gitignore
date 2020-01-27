@@ -3,3 +3,5 @@ _site
 .jekyll-metadata
 nohup.out
 Gemfile.lock
+node_modules/
+.cache/
