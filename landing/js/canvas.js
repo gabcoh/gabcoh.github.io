@@ -50,7 +50,7 @@ loader.load('/shapes.glb', function (gltf) {
 
   let renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth/2, window.innerHeight/2, false);
-  renderer.setClearColor(0xFFA869, 1);
+  renderer.setClearColor(0xFFB371, 1);
   document.getElementById("background").appendChild(renderer.domElement);
   window.addEventListener('resize', function() {
     this.setSize(window.innerWidth/2, window.innerHeight/2, false);
