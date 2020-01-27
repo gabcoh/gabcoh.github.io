@@ -1,0 +1,148 @@
+/* @import "../node_modules/bulma/css/bulma.css";
+ */
+@import "../node_modules/normalize.css/normalize.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+
+// MAKE SURE TO CHECK CANVAS BG IF YOU CHANGE THIS
+@import "colors.scss";
+
+$header-font: 'Kanit-SemiBold';
+$subheader-font: 'Kanit-Medium';
+$text-font: 'Montserrat-Medium';
+
+@font-face {
+  font-family: $header-font;
+  src: url('fonts/Kanit/' + $header-font + '.ttf');
+}
+@font-face {
+  font-family: $subheader-font;
+  src: url('fonts/Kanit/' + $subheader-font + '.ttf');
+}
+@font-face {
+  font-family: $text-font;
+  src: url('fonts/Montserrat/' + $text-font + '.ttf');
+}
+body {
+  margin: 0; 
+}
+#background, canvas { 
+  position: fixed;
+  z-index: 0;
+  width: 100%; height: 100% 
+}
+#main-content, #background {
+  position: absolute;
+}
+#main-content {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 100%;
+  z-index: 10;
+}
+#name {
+  /*
+   * TODO make this responsive. For smalls creens font-size: 24vw
+   */
+  position: relative;
+  font-family: $header-font;
+  font-size: 10vw;
+  font-weight: bold;
+  padding: 1rem 1rem 0 1rem;
+  margin-bottom: 0rem;
+  text-align: center;
+  color: $color-secondary-2-1;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 $color-secondary-2-1, 3px 3px 0 $color-primary-3, 5px 5px 0 $color-primary-4;
+
+  /*
+  &:before, &:after {
+    content: attr(data-name);
+    position: absolute;
+    text-align: center;
+    left: 0;
+    width: 100%;
+    color: $secondary-name-color;
+  }
+  &:before {
+    color: blue;
+  }
+  &:after {
+    color: $tertiary-name-color;
+  }
+  */
+  
+}
+/* Necessary for name pseudo element to be positioned corectly*/
+#text-wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+#main-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+.question {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  font-family: $subheader-font;
+  font-size: 4rem;
+
+  .question-header {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: $color-secondary-2-4;
+    // text-shadow: 1px 1px 0 $color-secondary-2-1, 3px 3px 0 $color-secondary-2-0, 5px 5px 0 $color-primary-4;
+    text-shadow: 1px 1px 0 $color-primary-1, 3px 3px 0 $color-secondary-2-0;
+  }
+  .fa-arrow-down {
+    transition: transform .3s ease-out;
+    align-self: center;
+    color: $color-primary-1;
+    text-shadow: 1px 1px 0 $color-secondary-2-1, 3px 3px 0 $color-secondary-2-0, 5px 5px 0 $color-primary-4;
+  }
+  .fa-arrow-down.flip {
+    transform: rotate(180deg);
+  }
+}
+.answer {
+  height: auto;
+  overflow: hidden;
+  transition:height 0.3s ease-out;
+  background-color: $color-secondary-2-4;
+  color: $color-complement-2;
+  border-radius: 15px;
+  box-shadow: 1px 1px 0 $color-secondary-2-1, 3px 3px 0 $color-secondary-2-0, 5px 5px 0 $color-primary-4;
+  p {
+    font-family: $text-font; 
+    font-size: 2rem;
+    // text-shadow: 1px 1px 0 $color-secondary-2-1, 2px 2px 0 $color-secondary-2-0;
+    text-shadow: 1px 1px 0 $color-secondary-2-1;
+    padding: 1em;
+  }
+}
+
+#footer {
+  display: flex;
+  z-index: -1;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3rem;
+
+  a {
+    font-family: $subheader-font;
+    font-size: 2rem;
+    color: $color-secondary-2-1;
+    text-shadow: 1px 1px 0 $color-secondary-2-1, 3px 3px 0 $color-primary-3, 5px 5px 0 $color-primary-4;
+  }
+}
