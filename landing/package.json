@@ -14,7 +14,7 @@
     "glsl-noise": "0.0.0",
     "normalize.css": "^8.0.1",
     "stats.js": "^0.17.0",
-    "three": "^0.112.1",
+    "three": "^0.125.0",
     "vanilla-tilt": "^1.7.0",
     "vue": "^2.6.11"
   },
